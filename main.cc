@@ -9,7 +9,7 @@
 //  XML_COMPLETE_ATTRS > XML_PARSE_DTDATTR 
 #define XMLMGR_PARSER_OPTIONS               (XML_PARSE_RECOVER | XML_PARSE_NOENT | XML_PARSE_DTDLOAD | XML_PARSE_DTDATTR | XML_PARSE_NOBLANKS | XML_PARSE_HUGE)
 
-const char* dump(xmlDocPtr doc, bool format = true)
+const char* dump(xmlDocPtr doc)
 {
     xmlNodePtr root = xmlDocGetRootElement(doc);
     xmlBufferPtr buf = xmlBufferCreate();
@@ -18,7 +18,7 @@ const char* dump(xmlDocPtr doc, bool format = true)
         return NULL;
     }
 
-    xmlNodeDump(buf, doc, root, 0, format ? 1 : 0);
+    xmlNodeDump(buf, doc, root, 0, 1);
     return buf->use > 0 ? (const char*) buf->content : NULL;
 }
 
