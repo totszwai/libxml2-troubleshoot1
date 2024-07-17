@@ -1,8 +1,3 @@
-
-#include <xmlsec/xmlsec.h>
-#include <xmlsec/xmldsig.h>
-#include <xmlsec/errors.h>
-
 #include <libxml/c14n.h>
 #include <libxml/xmlschemas.h>
 
