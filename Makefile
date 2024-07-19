@@ -10,5 +10,8 @@ LFLAGS=	$(TOPDIR)/libxml2-carillon/src/libxml2-2.13.1/.libs/libxml2.a
 %.o: %.cc
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-main: main.o
+main1: main1.o
+	$(CC) -o $@ $^ $(LFLAGS)
+
+main2: main2.o
 	$(CC) -o $@ $^ $(LFLAGS)
