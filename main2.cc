@@ -32,11 +32,9 @@ int main(int argc, char **argp)
     xmlInitParser();
     LIBXML_TEST_VERSION
 
-
     xmlDocPtr doc = NULL;
 
-    const char* sample = "<root xmlns:ds='http://www.w3.org/2000/09/xmldsig#'>"
-                             "</root>";
+    const char* sample = "<root xmlns:ds='http://www.w3.org/2000/09/xmldsig#'></root>";
     if (load(doc, sample))
     {
         fprintf(stdout, "%s\n", dump(doc));
@@ -45,17 +43,17 @@ int main(int argc, char **argp)
         xmlNodePtr newNode = nullptr;
 
         ok = xmlParseBalancedChunkMemory(doc, NULL, NULL, 0,
-                                        BAD_CAST "<X509Certificate>MII...SigningCertificate</X509Certificate>",
-                                        &newNode) == 0;
+                                         BAD_CAST "<X509Certificate>MII...SigningCertificate</X509Certificate>",
+                                         &newNode) == 0;
         if (ok)
-            fprintf(stdout, "Told you my xml is valid\n");
+            fprintf(stdout, "XML string is valid\n");
 
         ok = xmlParseBalancedChunkMemory(doc, NULL, NULL, 0,
-                                              BAD_CAST "<ds:X509Certificate>MII...SigningCertificate</ds:X509Certificate>",
-                                              &newNode) == 0;
+                                         BAD_CAST "<ds:X509Certificate>MII...SigningCertificate</ds:X509Certificate>",
+                                         &newNode) == 0;
 
         if (!ok)
-            fprintf(stdout, "Told you it has nothing to do with the xml sting, is the namespace\n");
+            fprintf(stdout, "Namespace is the root cause but how to fix it?\n");
 
         xmlFreeDoc(doc);
     }
